@@ -1,0 +1,84 @@
+import os
+import pandas as pd
+from scipy.signal import butter, filtfilt
+
+# Set the source directory
+source_directory = "/Users/jeff/Documents/1. UNC Chapel Hill/0. Projects/1_AMD/found_kinematics"
+
+def apply_butterworth_filter(motion_file):
+    # Apply the Butterworth filter to all columns except the time column
+    filtered_data = motion_file.copy()
+    for column in motion_file.columns:
+        if column != 'time':
+            column_data = motion_file[column]
+            cutoff_freq = 10  # Hz
+            fs = 60  # Sampling frequency
+            nyquist_freq = fs / 2  # Nyquist frequency
+            filter_order = 4  # Filter order
+
+            b, a = butter(filter_order, cutoff_freq / nyquist_freq, btype='low')
+
+            padlen = len(column_data) // 2  # Adjust padlen according to your needs
+            filtered_column_data = filtfilt(b, a, column_data, padlen=padlen)
+
+            filtered_data[column] = filtered_column_data
+    
+    return filtered_data
+
+
+# Anterior YBT Right
+ant_ybt_right_max = pd.DataFrame()
+mot_files = [f for f in os.listdir(source_directory) if f.endswith(".mot") and "ANT_YBT" in f]
+
+for file_name in mot_files:
+    motion_data = pd.read_csv(os.path.join(source_directory, file_name), delimiter='\t', skiprows=10)
+    filtered_data = apply_butterworth_filter(motion_data)
+    filtered_data.columns = ['ant_' + column if column != 'time' else column for column in filtered_data.columns]
+    selected_row = filtered_data.loc[filtered_data['ant_knee_angle_l'].idxmax()]  # Update column name here
+    ant_ybt_right_max = ant_ybt_right_max._append(selected_row.rename(file_name))
+print(ant_ybt_right_max)
+
+csv_output_path = os.path.join(source_directory, "ant_ybt_right_max_leftfix.csv")
+ant_ybt_right_max.to_csv(csv_output_path)
+
+print(f"CSV file saved at: {csv_output_path}")
+
+'''
+# Posteromedial YBT Right
+pm_ybt_right_max = pd.DataFrame()
+mot_files = [f for f in os.listdir(source_directory) if f.endswith(".mot") and "PM_YBT_r" in f]
+
+for file_name in mot_files:
+    motion_data = pd.read_csv(os.path.join(source_directory, file_name), delimiter='\t', skiprows=10)
+    filtered_data = apply_butterworth_filter(motion_data)
+    filtered_data.columns = ['pm_' + column if column != 'time' else column for column in filtered_data.columns]
+    selected_row = filtered_data.loc[filtered_data['pm_knee_angle_r'].idxmax()]
+    pm_ybt_right_max = pm_ybt_right_max._append(selected_row.rename(file_name))
+
+print(pm_ybt_right_max)
+
+csv_output_path = os.path.join(source_directory, "pm_ybt_right_max.csv")
+pm_ybt_right_max.to_csv(csv_output_path)
+
+print(f"CSV file saved at: {csv_output_path}")
+'''
+
+'''
+# Posterolateral YBT Right
+pl_ybt_right_max = pd.DataFrame()
+mot_files = [f for f in os.listdir(source_directory) if f.endswith(".mot") and "PL_YBT_r" in f]
+
+for file_name in mot_files:
+    motion_data = pd.read_csv(os.path.join(source_directory, file_name), delimiter='\t', skiprows=10)
+    filtered_data = apply_butterworth_filter(motion_data)
+    filtered_data.columns = ['pl_' + column if column != 'time' else column for column in filtered_data.columns]
+    selected_row = filtered_data.loc[filtered_data['pl_knee_angle_r'].idxmax()]     
+    pl_ybt_right_max = pl_ybt_right_max._append(selected_row.rename(file_name))
+print(pl_ybt_right_max)
+
+#csv_output_path = os.path.join(source_directory, "pl_ybt_right_max.csv")
+#pl_ybt_right_max.to_csv(csv_output_path)
+
+
+#print(f"CSV file saved at: {csv_output_path}")
+'''
