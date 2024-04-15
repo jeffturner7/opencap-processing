@@ -1,0 +1,6 @@
+augmenter_model: v0.3
+imageUpsampleFactor: 4
+openSimModel: LaiUhlrich2022
+poseDetector: OpenPose
+resolutionPoseDetection: 1x736
+verticalOffset: -0.14010274156570435
