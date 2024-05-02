@@ -18,6 +18,8 @@
     limitations under the License.
 '''
 
+
+
 from utils import download_session
 import os
 
@@ -25,16 +27,40 @@ import os
 
 # List of sessions you'd like to download. They go to the Data folder in the 
 # current directory.
-sessionList = ['b8978da5-be70-410d-8933-69bdc49606aa','44db9704-3735-41e6-84cc-b9acd953c98e','9b565b8a-11fe-4e08-b3a9-2d5c9fde15ad',
-               '29263267-09c9-4c58-baf0-ed4dce7fda73','10c534de-7eaf-4074-a33b-1c417dbdb1d3','33c2d8a4-4fe8-4661-87e9-688185748882',
-               '5ae16740-4c5a-4c4f-be63-36a6a58d39ec','a1309643-c6f7-45f2-8cb0-36653bd704e3','f4d393c3-2329-4df5-9eac-8dd03e4968dc',
-               'fc8a169d-8b38-4582-a06e-65a282c46f43','a26a3c19-a475-4efc-9d62-a9a90f761355','27049d30-1964-448c-9290-d0e6c0d6fb6e',
-               '574c2553-3ed5-452d-9a76-40a5351c6aef','98e701ca-decf-4ba6-b576-d0a61c512fa6','b6f63a2e-9802-45dd-9ea4-1c1d1f140b06',
-               '3385b46b-05d4-4ac0-9487-7903b908bb34','aa7806cf-79c7-4efb-8c0a-d1dc6e2833ac','f023203b-2a9d-49ff-ba5a-4b6f4f035437',
-               '68597493-1fa3-430f-aac1-e2cbb312f408','f53e54e9-b708-4fc8-9169-3c87b3cf9c6f','64324780-a58f-41e0-890d-e94497a40728',
-               'd99c8c5b-ba05-42ab-b819-6a3ec1c4d769','03203041-aaea-4879-9793-0aba711dab84','26e99e31-69c2-40ac-b0d6-27dbc6a074c3',
-               '6e1afd51-7ffc-494e-abcc-5ad4a5740240','88bfc8ff-7236-421c-b6ba-fe55648bcb6a','a3e7b015-deca-48a8-ab1a-425a75cc790f',
-               '9e778050-c9a7-4764-b68e-27d6dfc1cf8b']
+sessionList = ["98e591cd-202c-46a3-878d-4aa020e938a6"
+"5e95a016-0e65-4e6e-9976-a93659c4e380"
+"4a1c0ed2-72a5-4d67-bd1b-cb52780598c3"
+"fd5ac144-99a0-42d0-a7f7-d2e5d2cc085b"
+"b232c640-6899-40cf-a0b5-0f3d74698f97"
+"0138b4bc-f0d5-4165-a7dd-e0fb294654d1"
+"1b0e74b4-f29a-42b2-a3b9-f10d67e51763"
+"aec6e8d8-3398-4d12-b00d-8538fc624999"
+"70059d2d-705c-4d19-9f82-582d96b2e7f4"
+"ca9e16fa-efc2-43c6-8ba4-ce7f65d335fc"
+"a09e1204-a175-4665-a163-833b6a9159b9"
+"e9b7b5e5-9e05-437a-b200-4e1c7520d88f"
+"f4899c76-b551-4455-86e9-6b82607957fc"
+"d00c2881-1d9e-43f1-9ca6-0a0c92a4d43a"
+"53e6ea3e-987f-4a2d-87e4-5da1e26f45a2"
+"8aac7cd9-de47-4f42-9b93-67a1e9192cdc"
+"b07040cd-9cbe-4d13-b1b3-a874c478e5d0"
+"41c97b90-3343-4714-9583-967bb1101724"
+"ead1cf45-0cc5-4669-adfe-e6d75e32f5d4"
+"fe9fe5cc-b1a7-4fd3-a92d-0c8ba5468ebe"
+"a812478b-9b20-444e-b0a5-af235e013aac"
+"a968c8a8-17cb-4fe6-b8ce-5ebed87e735b"
+"534fe3db-43e2-401f-a555-742ca9b3e4db"
+"8a86a383-742b-4912-83fb-f6ee7591be7d"
+"d9533973-8798-40ea-bfb0-d3d4f10d58b4"
+"53170d81-d163-4239-85d8-574ff71cdd8e"
+"4265d9b5-9576-49c9-b8d9-edad24d64cbf"
+"ff145278-2fad-43cd-8762-4b6f07fc4a08"
+"6ea2ce2a-be08-4a8f-8e90-1e382dbd1ce2"
+"a7e9eb9c-73f5-4e61-8770-596ffa8593d0"
+"5eaf1fc5-8a48-48c0-b0ad-39e8a81976ac"
+"eb4244fd-37b7-4569-9d7a-bc67cbda0042"
+"8ba199b6-4f64-4340-bec5-547b34676e47"
+"24c60d93-71bd-4ad6-8712-9f72052fe7a1"]
 
 
 # # alternatively, read list of session IDs from CSV column
@@ -46,7 +72,7 @@ sessionList = ['b8978da5-be70-410d-8933-69bdc49606aa','44db9704-3735-41e6-84cc-b
 
              
 # base directory for downloads. Specify None if you want to go to os.path.join(os.getcwd(),'Data')
-downloadPath = os.path.join(os.getcwd(),'Stride')
+downloadPath = os.path.join(os.getcwd(),'UCL')
 
 for session_id in sessionList:
     # If only interested in marker and OpenSim data, downladVideos=False will be faster
