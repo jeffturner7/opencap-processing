@@ -24,6 +24,8 @@
 # We recommend only saving this .env file on your own encrypted machine
 # and not while running on google collab.
 
+#delete the environment in order to setup a new one to access a different account
+
 from utilsAuthentication import get_token
 import os
 

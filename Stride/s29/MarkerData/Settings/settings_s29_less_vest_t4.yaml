@@ -1,6 +1,0 @@
-augmenter_model: v0.3
-bbox_thr: 0.8
-imageUpsampleFactor: 4
-openSimModel: LaiUhlrich2022
-poseDetector: mmpose
-verticalOffset: -0.14831028869628904
