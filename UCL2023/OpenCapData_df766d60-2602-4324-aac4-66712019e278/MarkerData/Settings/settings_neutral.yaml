@@ -1,0 +1,5 @@
+augmenter_model: v0.2
+imageUpsampleFactor: 4
+offset: true
+poseDetector: OpenPose
+resolutionPoseDetection: default
